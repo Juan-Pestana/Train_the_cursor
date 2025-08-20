@@ -1,4 +1,4 @@
-# Cursor Rules for Fotolog Clone Project
+# Cursor Rules for Showcase Demo Project
 
 ## Tech Stack & Architecture
 
