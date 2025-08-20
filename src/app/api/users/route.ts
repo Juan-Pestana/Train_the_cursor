@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getAllUsers, createUser as dbCreateUser } from "@/lib/db/queries";
-import { UserSchema, safeParseUser } from "@/lib/schemas";
+import { UserSchema } from "@/lib/schemas";
 
 export async function GET() {
   try {
@@ -20,7 +20,7 @@ export async function POST(request: Request) {
     const body = await request.json();
 
     // Validate the request body using Zod
-    const validationResult = safeParseUser(body);
+    const validationResult = UserSchema.safeParse(body);
 
     if (!validationResult.success) {
       return NextResponse.json(

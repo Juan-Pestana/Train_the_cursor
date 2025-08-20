@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -17,34 +18,30 @@ export default function Home() {
           height={38}
           priority
         />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <Button asChild size="lg">
-            <a href="/sample">🚀 Basic Query Demo</a>
-          </Button>
-          <Button asChild variant="outline" size="lg">
-            <a href="/sample-zod">🛡️ Zod Validation Demo</a>
-          </Button>
+        <div className="text-center sm:text-left max-w-2xl">
+          <h1 className="text-3xl font-bold mb-4">Fotolog Clone</h1>
+          <p className="text-muted-foreground mb-6">
+            A modern full-stack application demonstrating React Query, Zod
+            validation, custom hooks, and state management patterns.
+          </p>
+          <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left space-y-2">
+            <li className="tracking-[-.01em]">
+              <strong>Full Stack Demo:</strong> React Hook Form + Zod + TanStack
+              Query + Database
+            </li>
+            <li className="tracking-[-.01em]">
+              <strong>State Management:</strong> Zustand stores for UI state
+              (sidebar, modals, notifications)
+            </li>
+          </ol>
         </div>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <Button asChild variant="secondary" size="lg">
-            <a href="/sample-zustand">⚡ Zustand State Demo</a>
+          <Button asChild size="lg">
+            <Link href="/sample">🚀 Full Stack Demo</Link>
           </Button>
-          <Button asChild variant="destructive" size="lg">
-            <a href="/sample-database">🗄️ Database Demo</a>
+          <Button asChild variant="outline" size="lg">
+            <Link href="/sample-zustand">⚡ State Management Demo</Link>
           </Button>
         </div>
 

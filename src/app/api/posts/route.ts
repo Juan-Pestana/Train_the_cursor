@@ -1,12 +1,5 @@
 import { NextResponse } from "next/server";
-import {
-  PostSchema,
-  CreatePostRequestSchema,
-  validateCreatePostData,
-  safeParseCreatePostData,
-  type Post,
-  type CreatePostRequest
-} from "@/lib/schemas";
+import { CreatePostSchema } from "@/lib/schemas";
 import { getAllPosts, createPost as dbCreatePost } from "@/lib/db/queries";
 
 export async function GET() {
@@ -27,7 +20,7 @@ export async function POST(request: Request) {
     const body = await request.json();
 
     // Validate the request body using Zod
-    const validationResult = safeParseCreatePostData(body);
+    const validationResult = CreatePostSchema.safeParse(body);
 
     if (!validationResult.success) {
       return NextResponse.json(

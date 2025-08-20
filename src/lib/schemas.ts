@@ -45,55 +45,13 @@ export const ErrorResponseSchema = z.object({
   details: z.unknown().optional()
 });
 
-// API Request schemas
-export const CreatePostRequestSchema = z.object({
-  title: z
-    .string()
-    .min(1, "Title is required")
-    .max(200, "Title must be less than 200 characters"),
-  body: z
-    .string()
-    .min(1, "Body is required")
-    .max(2000, "Body must be less than 2000 characters"),
-  author: z
-    .string()
-    .min(1, "Author is required")
-    .max(100, "Author name must be less than 100 characters")
-});
-
 // Type exports (inferred from schemas)
 export type Post = z.infer<typeof PostSchema>;
 export type User = z.infer<typeof UserSchema>;
 export type CreatePostData = z.infer<typeof CreatePostSchema>;
 export type UpdatePostData = z.infer<typeof UpdatePostSchema>;
-export type CreatePostRequest = z.infer<typeof CreatePostRequestSchema>;
+
 export type PostsResponse = z.infer<typeof PostsResponseSchema>;
 export type PostResponse = z.infer<typeof PostResponseSchema>;
 export type UserResponse = z.infer<typeof UserResponseSchema>;
 export type ErrorResponse = z.infer<typeof ErrorResponseSchema>;
-
-// Validation helpers
-export const validatePost = (data: unknown): Post => {
-  return PostSchema.parse(data);
-};
-
-export const validateCreatePostData = (data: unknown): CreatePostData => {
-  return CreatePostSchema.parse(data);
-};
-
-export const validateUser = (data: unknown): User => {
-  return UserSchema.parse(data);
-};
-
-// Safe parsing (returns success/error instead of throwing)
-export const safeParsePost = (data: unknown) => {
-  return PostSchema.safeParse(data);
-};
-
-export const safeParseCreatePostData = (data: unknown) => {
-  return CreatePostSchema.safeParse(data);
-};
-
-export const safeParseUser = (data: unknown) => {
-  return UserSchema.safeParse(data);
-};
